@@ -14,6 +14,7 @@ DIRECTORIES = (
     "assets/textures",
     "assets/screen-recordings",
     "assets/references",
+    "storyboards",
     "Blender/backups",
     "previews",
     "exports/frames",
@@ -45,6 +46,12 @@ def main() -> int:
         "scene": args.name,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "source_assets_are_immutable": True,
+        "workflow": {
+            "stage": "script_confirmation",
+            "script_confirmed": False,
+            "storyboard_status": "not_started",
+            "approved_for_blender": False,
+        },
         "output": {
             "width": args.width,
             "height": args.height,

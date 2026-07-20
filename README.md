@@ -45,16 +45,25 @@ history in [`daily-report/SKILL.md`](daily-report/SKILL.md).
 
 ### [blender-product-scene-video](blender-product-scene-video/SKILL.md)
 
-Build and deliver reusable Blender product-scene animations from a creative script, 3D model, textures, screen recording, and visual references.
+| Metadata | Value |
+|---|---|
+| Developer | [`sollarzoo`](https://github.com/Sollarzoo) |
+| Version | `1.3.1` |
+| Feedback | WeChat: `sollarzoo` |
 
-Use it when Claude needs to inspect or initialize a Blender scene, write a shot script, position a product model, configure PBR materials and video textures, design lighting/background/Shader animation, animate cameras or products, render image sequences, encode a final MP4, diagnose rendering problems (flicker, blur, framing, render time), or document production settings for later scenes.
+Plan, storyboard, build, and deliver reusable Blender product-scene animations
+from an approved creative script, product images, 3D model, textures, screen
+recording, and visual references.
 
-The skill turns a product-film idea into four synchronized deliverables:
+The production workflow has four user-facing stages:
 
-1. an approved shot specification
-2. a reversible `.blend` scene
-3. a validated image sequence
-4. a final video plus thumbnail and production record
+1. confirm the script and spoken-line/scene map;
+2. generate one numbered Image2 storyboard grid and obtain explicit approval;
+3. build the approved Blender scene, lighting, materials, models, and animation;
+4. render an image sequence, encode the video, run QC, and hand off production records.
+
+Storyboard approval is a hard gate: Blender production does not begin until the
+user approves the numbered grid image.
 
 **Contents:**
 
@@ -62,13 +71,20 @@ The skill turns a product-film idea into four synchronized deliverables:
 |---|---|
 | `SKILL.md` | Entry point — outcome, workflow, and quality rules |
 | `references/intake-and-script.md` | How to gather requirements and draft a shot specification |
+| `references/storyboard-sop.md` | Image2 storyboard generation, grid assembly, approval, and rollback rules |
 | `references/scene-build-sop.md` | Standard operating procedure for building the Blender scene |
 | `references/render-export-qc.md` | Render, export, and quality-control checklist |
 | `references/troubleshooting.md` | Fixes for flicker, blur, wrong speed, weak lighting, framing, slow renders |
 | `assets/scene-brief-template.md` | Template for drafting a shot specification when none exists |
+| `assets/storyboard-template.md` | Storyboard index, approval record, and Blender handoff template |
 | `scripts/init_project.py` | Scaffolds a scene workspace (source assets, previews, sequences, videos, logs) |
 | `scripts/validate_image_sequence.py` | Validates a rendered image sequence (count, dimensions) |
 | `scripts/encode_avfoundation.swift` | macOS AVFoundation encoder for turning an image sequence into an MP4 |
+
+**Latest release — v1.3.1:** moved creative selection ahead of Blender,
+introduced the mandatory numbered storyboard-grid approval gate, added
+four-stage progress navigation, and documented when a material direction change
+must return to the storyboard.
 
 ## Using these skills
 

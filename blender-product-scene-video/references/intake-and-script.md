@@ -2,16 +2,54 @@
 
 ## Contents
 
-1. Environment intake
-2. Minimum creative intake
-3. User-help requests
-4. Script drafting
-5. Shot decision rules
-6. Approval checklist
+1. Creative intake
+2. Script confirmation
+3. Storyboard readiness
+4. Environment intake
+5. User-help requests
+6. Blender handoff checklist
 
-## 1. Environment intake
+## 1. Creative intake
 
-Run the Blender MCP preflight in `blender-mcp-setup.md` before creative intake. Record:
+Inspect supplied files first, then fill only the missing fields.
+
+| Area | Required information | Preferred evidence |
+|---|---|---|
+| Story | What does each spoken line communicate? | Creative script |
+| Product | Which surface or feature must remain readable? | Real screen recording or screenshots |
+| Storyboard inputs | Product identity, composition, and style references | Clean product images plus 1–3 references |
+| Delivery | Ratio, approximate duration, platform | e.g. 9:16, 30 seconds, social video |
+| Constraints | No people, no text, deadline, brand limits | Explicit user statement |
+
+Do not ask for final Blender coordinates, lighting energy, or keyframes during script confirmation.
+
+## 2. Script confirmation
+
+If the script exists, inspect it as the source of truth and verify:
+
+- every spoken line maps to a named scene;
+- every scene has a clear message and product priority;
+- the opening and ending intent are understandable;
+- unsupported product behavior is excluded;
+- visual boundaries and delivery format are recorded.
+
+If the user has no script, copy `assets/scene-brief-template.md` and use the generic example for structure. Request explicit confirmation before generating the storyboard.
+
+## 3. Storyboard readiness
+
+Before generating the Image2 storyboard, collect:
+
+- one or more clean product images or approved renders;
+- real UI screenshots or screen-recording frames;
+- brand assets that will actually appear;
+- one to three composition, lighting, or atmosphere references;
+- the previous scene's selected ending frame when continuity matters.
+
+Follow `storyboard-sop.md`. Do not open Blender to discover the visual direction.
+
+## 4. Environment intake
+
+Run the Blender MCP preflight only after storyboard approval or when read-only inspection is needed to inventory existing assets. Record:
 
 - Blender location and version;
 - Blender MCP server availability;
@@ -20,26 +58,9 @@ Run the Blender MCP preflight in `blender-mcp-setup.md` before creative intake. 
 - current `.blend` path;
 - whether the user needs to install, enable, restart, log in, or approve anything.
 
-If MCP is unavailable, explain the limitation and continue only with script/assets or the documented background/script fallback.
+If MCP is unavailable, explain the limitation. Script confirmation and storyboard work may continue; Blender production may not.
 
-## 2. Minimum creative intake
-
-Inspect supplied files first, then fill only the missing fields.
-
-| Area | Required information | Preferred evidence |
-|---|---|---|
-| Story | What changes from the first frame to the last? | Creative script or storyboard |
-| Product | Which surface or feature must remain readable? | Real screen recording or screenshots |
-| Model | Generic or named device; visible angles | `.blend`, `.glb`, `.fbx`, `.obj` |
-| Materials | Finish, color, glass, metal, roughness | PBR maps and reference photos |
-| Motion | Camera move, product move, or hybrid | Timing notes and event frames |
-| Style | Warm/cool, background, contrast, realism | 1–3 reference images |
-| Delivery | Ratio, pixels, fps, duration, platform | e.g. 9:16, 1080×1920, 30fps |
-| Constraints | No text, no people, deadline, render budget | Explicit user statement |
-
-Do not ask again for information already present in the conversation, script, scene, or asset folder.
-
-## 3. Ask the user for help precisely
+## 5. Ask the user for help precisely
 
 Use one compact request at a time:
 
@@ -50,49 +71,21 @@ Use one compact request at a time:
 - “当前缺少 3D 模型。请在 Sketchfab 登录并下载许可合适的模型，或授权我筛选候选；不要在聊天中提供账号密码。”
 - “该素材在私有云盘中，请你完成登录或把文件下载到项目素材目录；不要在聊天中发送密码。”
 - “这两种背景会改变影片气质，请确认更偏温暖自然还是冷静科技。”
+- “故事版已经展示了手机角度、画面构图和反光方向。请确认这版是否可以作为 Blender 的唯一制作依据。”
 
 No account is needed for Blender, Blender MCP, local image sequences, AVFoundation, or an already installed FFmpeg. A user may need to act for cloud drives, model marketplaces, render farms, paid plugins, or private repositories.
 
-## 4. Draft a missing script
+## 6. Blender handoff checklist
 
-Copy `assets/scene-brief-template.md`. Convert qualitative wishes into measurable instructions.
+Before editing Blender, all creative gates must pass:
 
-Bad:
-
-> 镜头慢慢拉远，背景高级一点。
-
-Good:
-
-> 第 1–360 帧聚焦屏幕下方输入框；第 361–781 帧手机沿世界 Y 轴后退，相机只承担约 20% 的后移；第 781 帧发送完成时到达完整手机机位并停止。背景墙固定，仅 Shader 缓慢流动。
-
-The shot specification must include:
-
-- frame range and seconds;
-- first, middle, stop, and final states;
-- camera lens, pose, target, and movement;
-- product rig pose and movement;
-- focus object and aperture;
-- screen-video timing;
-- lighting direction and roles;
-- background geometry and Shader behavior;
-- output settings;
-- acceptance criteria.
-
-When the screen video defines story timing, inspect its real duration and identify event frames. Do not guess when typing ends, a send action occurs, or a feature transition begins.
-
-## 5. Choose camera, product, or hybrid motion
-
-- Move the camera when the environment should reveal parallax and the subject can remain spatially fixed.
-- Move the product when the background should feel stable and the product must change scale strongly.
-- Use hybrid motion when a frontal push/pull makes foreground and background feel glued together. Let the product carry most depth change and the camera supply subtle reframing.
-- Keep background geometry fixed unless the story explicitly calls for a moving set. Animate its material coordinates for slow light flow.
-
-Do not animate both camera and product with equal, unmotivated movement. Assign a clear movement owner.
-
-## 6. Approval checklist
-
-Before editing Blender, confirm or infer safely:
-
+- [ ] script explicitly confirmed;
+- [ ] spoken-line/scene map confirmed;
+- [ ] Image2 storyboard generated from product references and assembled as one numbered grid image;
+- [ ] opening, hero, and ending compositions are visible together in chronological grid order;
+- [ ] product pose, background, lighting, and reflection intent are annotated;
+- [ ] user explicitly approved the selected storyboard direction;
+- [ ] storyboard record is marked `approved_for_blender`;
 - [ ] Blender MCP read-only connection succeeds;
 - [ ] returned `.blend` path is correct;
 - [ ] real product feature shown;
@@ -104,4 +97,4 @@ Before editing Blender, confirm or infer safely:
 - [ ] source assets and licenses;
 - [ ] preview-versus-final quality budget.
 
-If any unchecked item would materially alter the creative result, ask. Otherwise proceed and state the assumption.
+Do not infer storyboard approval. If any creative item is unchecked, remain in stage 1 or 2. If the storyboard is approved and only a technical item remains, resolve or ask before the affected Blender operation.

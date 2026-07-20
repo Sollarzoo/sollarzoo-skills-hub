@@ -7,10 +7,11 @@
 3. Evidence and constraints
 4. Master timeline
 5. Scene and spoken-line index
-6. Detailed Blender scene specification
-7. Asset checklist
-8. Preview and export gates
-9. Production status and handoff
+6. Image2 storyboard plan and approval
+7. Detailed Blender scene specification
+8. Asset checklist
+9. Preview and export gates
+10. Production status and handoff
 
 ## 1. How to use this example
 
@@ -21,6 +22,7 @@ Use this document only as a structural reference when no production script exist
 - Measure coordinates, frames, durations, and render settings from the actual Blender scene.
 - Do not copy example claims into a real script without product evidence.
 - Keep the master timeline, scene index, and detailed Blender sections synchronized.
+- Confirm the script first, then approve one numbered Image2 storyboard grid before Blender production.
 - Mark drafts, technical previews, approved shots, image-sequence masters, and final videos as different states.
 
 The example intentionally contains no real company, product, feature, customer, campaign, private path, or business metric.
@@ -106,16 +108,37 @@ Keep this table concise. It explains the complete film without Blender implement
 
 ## 5. Scene and spoken-line index
 
-This is the production index shared by writing, Blender, and editing.
+This is the production index shared by writing, storyboard, Blender, and editing.
 
-| Scene | Spoken line | Concise visual description | Working file | Status |
-|---|---|---|---|---|
-| SC01 `[scene name]` | `[Spoken line A]` | `[Opening state → movement → final state]` | `Blender/SC01-[slug]-v1.blend` | `[draft / preview / approved / final]` |
-| SC02 `[scene name]` | `[Spoken line B]` | Starts at SC01's final composition, then `[camera/product action]` to reveal `[verified UI or product result]`. | `Blender/SC02-[slug]-v1.blend` | `[draft / preview / approved / final]` |
+| Scene | Spoken line | Concise visual description | Storyboard grid | Working file | Status |
+|---|---|---|---|---|---|
+| SC01 `[scene name]` | `[Spoken line A]` | `[Opening state → movement → final state]` | `storyboards/SC01-v1/SC01-storyboard-grid-v1.png` | `Blender/SC01-[slug]-v1.blend` | `[script confirmed / storyboard / approved for Blender / preview / final]` |
+| SC02 `[scene name]` | `[Spoken line B]` | Starts at SC01's final composition, then `[camera/product action]` to reveal `[verified UI or product result]`. | `storyboards/SC02-v1/SC02-storyboard-grid-v1.png` | `Blender/SC02-[slug]-v1.blend` | `[script confirmed / storyboard / approved for Blender / preview / final]` |
 
 Every spoken line should map to one primary scene. If one line spans multiple shots, list the shot transition explicitly in the master timeline.
 
-## 6. Detailed Blender scene specification
+## 6. Image2 storyboard plan and approval
+
+Use product images and real UI references to create three deliberate frames per scene, then combine them into one numbered grid image for review.
+
+| Scene | Frame | Image path | Product pose and camera | Lighting/background | Status |
+|---|---|---|---|---|---|
+| SC01 | Opening | `storyboards/SC01-v1/opening.png` | `[pose, scale, angle, crop]` | `[approved intent]` | `[draft / selected]` |
+| SC01 | Hero | `storyboards/SC01-v1/hero.png` | `[pose, scale, angle, crop]` | `[approved intent]` | `[draft / selected]` |
+| SC01 | Ending | `storyboards/SC01-v1/ending.png` | `[pose, scale, angle, crop]` | `[approved intent]` | `[draft / selected]` |
+
+- Source script version: `[path/version]`
+- Storyboard grid: `storyboards/SC01-v1/SC01-storyboard-grid-v1.png`
+- Grid layout and panel order: `[for example, 3×1: SC01-01 → SC01-03]`
+- Selected direction: `[short description]`
+- Rejected alternatives: `[paths and reason]`
+- User feedback: `[summary]`
+- Approval status: `[storyboard_review / approved_for_blender]`
+- Approval date: `[date]`
+
+Separate panel files are working assets. Do not begin the detailed Blender implementation until the grid image is reviewed and approval status is `approved_for_blender`.
+
+## 7. Detailed Blender scene specification
 
 ### SC01 — `[scene name]`
 
@@ -130,6 +153,7 @@ Start with `[opening composition]`. Let `[camera / product / hybrid rig]` own th
 #### Files and recovery
 
 - Working file: `Blender/SC01-[slug]-v1.blend`
+- Approved storyboard: `storyboards/SC01-v1/`
 - Structural backup: `Blender/SC01-[slug]-v1-before-[change].blend`
 - Screen recording: `assets/video/[recording].mp4`
 - Product model: `assets/models/[model file]`
@@ -242,11 +266,12 @@ Record actual evaluated world coordinates from Blender.
 
 Use the same detailed subsections as SC01 for files, frame range, motion curve, lighting, previews, and export status.
 
-## 7. Asset checklist
+## 8. Asset checklist
 
 ### Required
 
 - [ ] Approved creative brief or measurable shot specification
+- [ ] Approved Image2 storyboard grid showing opening, hero, and ending frames together
 - [ ] Real screen recording or approved UI stills
 - [ ] Licensed product model and textures
 - [ ] One to three visual references
@@ -263,7 +288,7 @@ Use the same detailed subsections as SC01 for files, frame range, motion curve, 
 - [ ] Camera and focus targets are named
 - [ ] Source asset licenses and attribution are recorded
 
-## 8. Preview and export gates
+## 9. Preview and export gates
 
 ### Representative frames
 
@@ -294,12 +319,15 @@ Use the same detailed subsections as SC01 for files, frame range, motion curve, 
 - Subtitles: `[included / editing-stage / none]`
 - Quality compromise: `[none / describe]`
 
-## 9. Production status and handoff
+## 10. Production status and handoff
 
 Use explicit states:
 
 ```text
-Draft specification
+Draft script
+→ Script confirmed
+→ Image2 storyboard draft
+→ Storyboard approved for Blender
 → Technical still preview
 → Short motion proof
 → Approved for full render
@@ -312,6 +340,7 @@ Draft specification
 Before handoff, confirm:
 
 - [ ] The master timeline matches the scene index.
+- [ ] The selected storyboard matches the script and has explicit approval.
 - [ ] The scene index matches the detailed Blender sections.
 - [ ] The detailed parameters match the saved `.blend`.
 - [ ] Preview, image-sequence, video, and status paths exist.

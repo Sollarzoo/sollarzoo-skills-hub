@@ -2,17 +2,29 @@
 
 ## Contents
 
-1. Inspect and back up
-2. Initialize and organize
-3. Load and normalize the model
-4. Build materials and screen
-5. Compose camera and focus
-6. Design product lighting
-7. Build background and Shader
-8. Animate
-9. Optimize and preview
+1. Verify the storyboard gate
+2. Inspect and back up
+3. Initialize and organize
+4. Load and normalize the model
+5. Build materials and screen
+6. Compose camera and focus
+7. Design product lighting
+8. Build background and Shader
+9. Animate
+10. Optimize and preview
 
-## 1. Inspect and back up
+## 1. Verify the storyboard gate
+
+Before any production edit, open the storyboard record and verify:
+
+- `approved_for_blender: true`;
+- the approved storyboard-grid path and source panel paths exist;
+- the source script version is recorded;
+- product pose, camera composition, background, lighting/reflection, and continuity are annotated.
+
+If the gate is absent or ambiguous, stop after read-only inventory and return to the Image2 storyboard stage. Do not use Blender variants to replace the missing creative decision.
+
+## 2. Inspect and back up
 
 Connect to the current Blender scene and inspect without modifying:
 
@@ -27,7 +39,7 @@ Connect to the current Blender scene and inspect without modifying:
 
 Do not dump a large scene blindly. Start with counts and collections, then inspect relevant objects. Save a named backup such as `scene-before-lighting.blend` before structural changes.
 
-## 2. Initialize and organize
+## 3. Initialize and organize
 
 Use collections:
 
@@ -42,7 +54,7 @@ SC##_HELPERS
 
 Use role-based names. Create a single product root such as `SC##_ProductRig`. Parent the device, screen focus, reflection cards, and product lights that must keep a constant relationship to the product. Keep the physical background and background lights outside that rig.
 
-## 3. Load and normalize the model
+## 4. Load and normalize the model
 
 1. Import the supplied format with the standard Blender operator.
 2. Capture actual returned objects; do not assume names.
@@ -55,7 +67,7 @@ Use role-based names. Create a single product root such as `SC##_ProductRig`. Pa
 
 For named commercial hardware, use only a user-provided or licensed model.
 
-## 4. Build materials and screen
+## 5. Build materials and screen
 
 ### PBR rules
 
@@ -80,7 +92,7 @@ For named commercial hardware, use only a user-provided or licensed model.
 
 Keep direct front light modest. Use side/rim/reflection lights for form, plus only enough front fill to reveal glass and bezel.
 
-## 5. Compose camera and focus
+## 6. Compose camera and focus
 
 - Set final output ratio before judging composition.
 - Use a camera target empty instead of hand-keyframing rotation when the subject must remain centered.
@@ -99,7 +111,7 @@ For a hybrid pull-back:
 
 Use timeline markers for story events such as typing start, send complete, full-product arrival, feature transition, and end.
 
-## 6. Design product lighting
+## 7. Design product lighting
 
 Start with 5–8 lights:
 
@@ -118,7 +130,7 @@ Evaluate each light by toggling it alone and then in the full rig. Delete or dis
 
 Avoid volumetric cones unless the story requires visible atmosphere. They increase render cost and can flicker in viewport export.
 
-## 7. Build background and Shader
+## 8. Build background and Shader
 
 Prefer one physical background wall or cyclorama. Disable overlapping coplanar surfaces to prevent Z-fighting.
 
@@ -134,7 +146,7 @@ For a flowing abstract background:
 
 Do not place emissive cards nearly coplanar with the wall. If a light should appear on a wall, use a real light or incorporate the glow into one background material.
 
-## 8. Animate
+## 9. Animate
 
 1. Convert script seconds to frames using the exact fps.
 2. Create story-event markers first.
@@ -146,7 +158,7 @@ Do not place emissive cards nearly coplanar with the wall. If a light should app
 
 Do not accelerate a one-minute source recording to fit a shorter arbitrary timeline. Change the scene duration or edit the story with user approval.
 
-## 9. Optimize and preview
+## 10. Optimize and preview
 
 - Use Eevee for fast product-film iterations unless Cycles-specific realism is required.
 - Disable unused lights, hidden geometry, duplicate backgrounds, volumes, and expensive modifiers.

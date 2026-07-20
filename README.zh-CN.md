@@ -44,16 +44,23 @@ Notion，然后运行第一份需要人工确认工时的日报。
 
 ### [blender-product-scene-video](blender-product-scene-video/SKILL.md)
 
-根据创意脚本、3D 模型、贴图、屏幕录屏和视觉参考，构建并交付可复用的 Blender 产品场景动画。
+| 元信息 | 内容 |
+|---|---|
+| 开发者 | [`sollarzoo`](https://github.com/Sollarzoo) |
+| 版本 | `1.3.1` |
+| 反馈联系 | 微信：`sollarzoo` |
 
-适用场景：需要检查或初始化 Blender 场景、编写缺失的分镜脚本、加载并摆放产品模型、配置 PBR 材质和视频贴图、设计灯光/背景/程序化 Shader 动画、为相机或产品制作动画、渲染并校验图像序列、编码最终 MP4 视频、诊断闪烁/模糊/构图/渲染耗时等问题,或为后续场景记录制作参数。
+根据已确认的创意脚本、产品图片、3D 模型、贴图、屏幕录屏和视觉参考，
+规划故事板、搭建 Blender 场景并交付可复用的产品动画。
 
-该技能将一个产品短片创意转化为四个同步交付物:
+制作流程分为四个面向用户的阶段：
 
-1. 一份已确认的分镜脚本;
-2. 一个可回退的 `.blend` 场景文件;
-3. 一套完整且经过校验的图像序列;
-4. 一段可播放的最终视频,附带缩略图和制作记录。
+1. 确认脚本和台词—场景映射；
+2. 生成一张带编号的 Image2 宫格故事板并取得明确确认；
+3. 按已确认故事板搭建 Blender 场景、灯光、材质、模型和动画；
+4. 渲染图像序列、编码视频、完成质量检查与制作记录交付。
+
+故事板确认是硬门槛：用户没有确认宫格图之前，不进入 Blender 正式制作。
 
 **目录结构:**
 
@@ -61,13 +68,19 @@ Notion，然后运行第一份需要人工确认工时的日报。
 |---|---|
 | `SKILL.md` | 入口文档 —— 目标、工作流与质量准则 |
 | `references/intake-and-script.md` | 如何收集需求并起草分镜脚本 |
+| `references/storyboard-sop.md` | Image2 故事板生成、宫格拼接、确认与回退规则 |
 | `references/scene-build-sop.md` | Blender 场景搭建的标准操作流程 |
 | `references/render-export-qc.md` | 渲染、导出与质量检查清单 |
 | `references/troubleshooting.md` | 闪烁、模糊、速度错误、灯光不足、构图、渲染缓慢等问题的排查方法 |
 | `assets/scene-brief-template.md` | 用户没有可用脚本时,用于起草分镜脚本的模板 |
+| `assets/storyboard-template.md` | 故事板索引、确认记录与 Blender 交接模板 |
 | `scripts/init_project.py` | 初始化场景工作目录(源素材、预览、图像序列、视频、日志) |
 | `scripts/validate_image_sequence.py` | 校验渲染出的图像序列(数量、尺寸) |
 | `scripts/encode_avfoundation.swift` | macOS 上基于 AVFoundation 的编码器,将图像序列合成为 MP4 |
+
+**最新版本 — v1.3.1：**将创意选择前移到 Blender 之前，增加强制的带编号
+宫格故事板确认门槛、四阶段进度导航，以及创意方向发生实质变化时返回故事板
+而不是继续堆积 Blender 变体的规则。
 
 ## 如何使用这些技能
 
