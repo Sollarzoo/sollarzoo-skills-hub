@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blender 产品场景视频"
+  short_description: "从脚本、模型和素材搭建可复用的 Blender 产品动画并导出视频"
+  default_prompt: "Use $blender-product-scene-video to turn my product script and assets into a reviewed Blender scene, image sequence, and final video."
