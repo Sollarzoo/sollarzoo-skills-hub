@@ -8,7 +8,7 @@ description: Build and deliver reusable Blender product-scene animations from a 
 ## Skill metadata
 
 - Author: [sollarzoo](https://github.com/Sollarzoo)
-- Version: `1.2.3`
+- Version: `1.2.5`
 - Feedback WeChat: `sollarzoo`
 
 ## Outcome
@@ -37,6 +37,51 @@ Start with a concise commentary update. State which source files and scene will 
 
 Ask the user only when the answer materially changes the creative result, requires credentials, or authorizes a risky external action.
 
+### Keep progress visible
+
+Map the internal workflow to these seven user-facing phases:
+
+1. Blender and MCP preflight;
+2. source assets and shot specification;
+3. scene setup and controlled build;
+4. still-frame review through gates A–C;
+5. short motion proof through gate D;
+6. image-sequence render, validation, encoding, and QC;
+7. script synchronization and complete handoff.
+
+At the start, after every phase transition, before requesting approval, whenever work pauses or becomes blocked, and at final handoff, publish a compact status block in the user's language:
+
+```text
+Progress: phase 4/7 — Still-frame review
+Completed: SC02 copy, camera animation, look target, and focus target
+Current: checking opening, middle, stop, and final frames
+Next: render a short motion proof
+Then: export the image sequence after approval
+User action: none
+```
+
+Apply these rules:
+
+- put only verified outcomes under `Completed`;
+- name exactly one immediate action under `Next` and one following action under `Then`;
+- write `User action: none` when the user does not need to intervene;
+- when entering an existing project midway, mark earlier phases as completed, skipped, or not applicable instead of pretending to restart;
+- distinguish technical preview, approval gate, production render, validation, encoding, and final delivery;
+- do not use vague updates such as “still working” without stating the current phase and next checkpoint.
+
+During a render or another operation expected to take longer than about one minute, add measurable sub-progress:
+
+```text
+Render: 48/150 frames
+Elapsed: about 2 minutes
+Estimated remaining: about 4 minutes
+After render: validate frame count and inspect representative frames
+```
+
+Use actual frame counts and status files when available. If a reliable estimate is unavailable, say so instead of inventing one. Update the user at meaningful milestones and at least about once per minute while the operation is active.
+
+When paused for approval or blocked by a missing asset, connection, or permission, state the exact gate, what is already safe and complete, the decision or input required, and what resumes immediately afterward.
+
 ### Require user input for
 
 - the intended story, visual references, product priority, aspect ratio, duration, and delivery platform when they cannot be inferred;
@@ -57,7 +102,7 @@ Tell the user exactly what to provide: supported file type, preferred resolution
 - image-sequence validation and local video encoding;
 - documentation of final coordinates, frames, lighting, Shader parameters, and output paths.
 
-Report meaningful changes and long-running progress. Do not leave the user without an update for more than about one minute while rendering.
+Report meaningful changes using the progress contract above.
 
 ## Execute the workflow
 
@@ -188,7 +233,14 @@ Deliver clickable links to:
 - the final video and thumbnail;
 - the render status/log.
 
-State resolution, fps, frame count, duration, codec, file size, whether audio/subtitles are included, and any quality compromise. Synchronize the approved camera, light, background, Shader, animation, and export settings back into the script so the document matches Blender.
+State resolution, fps, frame count, duration, codec, file size, whether audio/subtitles are included, and any quality compromise.
+
+Synchronize the approved production state back into the creative script at two levels:
+
+1. update the high-level Markdown scene index or shot table so each spoken line maps to one named scene and a concise visual description;
+2. add or revise the detailed scene section with the actual `.blend` path, backup path, scene/collection/object names, frame range, camera and product coordinates, lens, focus target, aperture, lighting/background behavior, animation timing, preview files, export paths, and approval status.
+
+Do not let the detailed Blender section drift away from the script's summary table. Mark technical previews, approved shots, image-sequence masters, and final videos as distinct states. If the script has no scene index, create one before handoff.
 
 ### 9. Offer the optional feedback channel
 
