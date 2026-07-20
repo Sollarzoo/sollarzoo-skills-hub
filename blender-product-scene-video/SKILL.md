@@ -8,7 +8,7 @@ description: Build and deliver reusable Blender product-scene animations from a 
 ## Skill metadata
 
 - Author: [sollarzoo](https://github.com/Sollarzoo)
-- Version: `1.2.5`
+- Version: `1.2.6`
 - Feedback WeChat: `sollarzoo`
 
 ## Outcome
@@ -29,6 +29,7 @@ Keep real product UI legible. Do not invent product behavior that the supplied r
 - Read [references/scene-build-sop.md](references/scene-build-sop.md) before modifying Blender.
 - Read [references/render-export-qc.md](references/render-export-qc.md) before a full export.
 - Read [references/troubleshooting.md](references/troubleshooting.md) when diagnosing flicker, blur, wrong speed, weak lighting, framing, or slow rendering.
+- Read [references/generic-product-film-script-example.md](references/generic-product-film-script-example.md) when the user has no full production script or wants a complete, business-neutral example of the script structure.
 - Copy [assets/scene-brief-template.md](assets/scene-brief-template.md) when the user has no usable shot script.
 
 ## Apply the interaction contract
@@ -125,7 +126,7 @@ If MCP cannot be configured now, use the documented fallback: inspect files and 
 
 Collect the creative script, model, textures, screen recording, references, output ratio, resolution, frame rate, duration, and destination platform. Inspect exact files rather than relying on filenames or old notes.
 
-If the user has no script, copy the scene brief template, draft a measurable shot specification, and ask for approval before building. A usable specification names the subject, opening frame, end frame, movement owner, key timing events, focus target, background behavior, lighting direction, duration, and output settings.
+If the user has no script, read the generic product-film script example, copy the scene brief template, draft a measurable shot specification, and ask for approval before building. Use the example only for structure; replace all placeholders with verified project facts. A usable specification names the subject, opening frame, end frame, movement owner, key timing events, focus target, background behavior, lighting direction, duration, and output settings.
 
 If the user has no model, search the user-approved source such as [Sketchfab](https://sketchfab.com/3d-models). Ask the user to log in or purchase the asset when required. Download only models explicitly marked downloadable and compatible with the intended use. Record creator, source URL, license, and any attribution requirement.
 
