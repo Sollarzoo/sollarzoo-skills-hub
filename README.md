@@ -6,6 +6,43 @@ A collection of [Claude Agent Skills](https://docs.claude.com/en/docs/claude-cod
 
 ## Skills
 
+### [daily-report](daily-report/SKILL.md)
+
+| Metadata | Value |
+|---|---|
+| Developer | [`sollarzoo`](https://github.com/Sollarzoo) |
+| Version | `5.3.1` |
+| Feedback | WeChat: `sollarzoo` |
+
+Generate task-oriented Markdown daily reports from repository activity and conversation
+context. The skill can use Toggl Track API v9 as time evidence, requires human
+confirmation before finalizing task hours, writes PAL-compatible reports, rebuilds
+ROI/backlinks, and idempotently synchronizes confirmed cumulative hours to a Notion
+task database.
+
+**Contents:**
+
+| Path | Purpose |
+|---|---|
+| `SKILL.md` | Complete daily-report workflow and failure-recovery rules |
+| `config.example.json` | Public-safe template for device, PAL, timezone, and Notion settings |
+| `toggl_track.py` | Secret-safe Toggl Track API v9 client |
+| `helpers.py` | Theme, existing-report, and problem-space helpers |
+| `references/getting-started.md` | Seven-step initialization and Toggl API setup guide |
+| `references/toggl-track-notion-sync.md` | Credential, matching, and idempotent Notion sync protocol |
+| `tests/` | Unit tests for helpers and Toggl time aggregation |
+
+**First run:** follow
+[`references/getting-started.md`](daily-report/references/getting-started.md) to
+install the full Skill, create a private config from `config.example.json`,
+store the Toggl API token in a Git-ignored `.env` or macOS Keychain, verify the
+live API response, connect Notion, and run the first confirmed report.
+
+**Latest release — v5.3.1 (2026-07-20):** added the seven-step first-run guide,
+public-safe configuration template, explicit Toggl token setup and verification,
+and configurable Notion database/property fields. See the complete version
+history in [`daily-report/SKILL.md`](daily-report/SKILL.md).
+
 ### [blender-product-scene-video](blender-product-scene-video/SKILL.md)
 
 Build and deliver reusable Blender product-scene animations from a creative script, 3D model, textures, screen recording, and visual references.

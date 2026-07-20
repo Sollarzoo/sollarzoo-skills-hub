@@ -1,0 +1,14 @@
+{
+  "device_id": "mbp",
+  "user_id": "your-user-id",
+  "display_name": "Your Name",
+  "notion_user_id": "",
+  "pal_base_url": "http://localhost:3000",
+  "pal_base_path": "/absolute/path/to/Product-Agentic-Loop/PAL-Obsidian/8-日报",
+  "pal_local_path": "/absolute/path/to/Product-Agentic-Loop/PAL-Obsidian/8-日报/your-user-id",
+  "timezone": "Asia/Shanghai",
+  "notion_database_id": "replace-with-your-notion-database-id",
+  "notion_data_source_id": "",
+  "notion_title_property": "问题描述",
+  "notion_hours_property": "工时(h)"
+}

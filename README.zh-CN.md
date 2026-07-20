@@ -6,6 +6,42 @@
 
 ## 技能列表
 
+### [daily-report](daily-report/SKILL.md)
+
+| 元信息 | 内容 |
+|---|---|
+| 开发者 | [`sollarzoo`](https://github.com/Sollarzoo) |
+| 版本 | `5.3.1` |
+| 反馈联系 | 微信：`sollarzoo` |
+
+根据仓库活动和对话上下文生成以任务为单位的 Markdown 日报。该技能可使用
+Toggl Track API v9 作为工时证据，在写入任务工时前强制人工确认，生成
+PAL 兼容日报、重建 ROI 与任务回链，并将已确认的任务累计工时幂等同步到
+Notion 任务数据库。
+
+**目录结构:**
+
+| 路径 | 说明 |
+|---|---|
+| `SKILL.md` | 完整的日报流程和失败恢复规则 |
+| `config.example.json` | 设备、PAL、时区和 Notion 设置的公开安全模板 |
+| `toggl_track.py` | 不泄露凭据的 Toggl Track API v9 客户端 |
+| `helpers.py` | 主题、已有日报和 problem-space 辅助函数 |
+| `references/getting-started.md` | 七步初始化与 Toggl API 配置指南 |
+| `references/toggl-track-notion-sync.md` | 凭据、任务匹配与 Notion 幂等同步协议 |
+| `tests/` | helpers 与 Toggl 工时聚合测试 |
+
+**首次使用：**按照
+[`references/getting-started.md`](daily-report/references/getting-started.md)
+安装完整 Skill，从 `config.example.json` 创建私有配置，把 Toggl API Token
+保存到 Git 忽略的 `.env` 或 macOS Keychain，验证真实 API 响应，连接
+Notion，然后运行第一份需要人工确认工时的日报。
+
+**最新版本 — v5.3.1（2026-07-20）：**新增七步首次使用指南、公开安全配置
+模板、明确的 Toggl Token 配置与验证步骤，以及可配置的 Notion 数据库和字段。
+完整版本历史见
+[`daily-report/SKILL.md`](daily-report/SKILL.md)。
+
 ### [blender-product-scene-video](blender-product-scene-video/SKILL.md)
 
 根据创意脚本、3D 模型、贴图、屏幕录屏和视觉参考，构建并交付可复用的 Blender 产品场景动画。

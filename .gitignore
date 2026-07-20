@@ -1,2 +1,4 @@
 .DS_Store
-/blender-product-scene-video/scripts/__pycache__
+**/__pycache__/
+**/.pytest_cache/
+*.pyc
