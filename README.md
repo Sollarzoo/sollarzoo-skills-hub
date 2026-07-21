@@ -48,7 +48,7 @@ history in [`daily-report/SKILL.md`](daily-report/SKILL.md).
 | Metadata | Value |
 |---|---|
 | Developer | [`sollarzoo`](https://github.com/Sollarzoo) |
-| Version | `1.3.1` |
+| Version | `1.5.1` |
 | Feedback | WeChat: `sollarzoo` |
 
 Plan, storyboard, build, and deliver reusable Blender product-scene animations
@@ -57,13 +57,15 @@ recording, and visual references.
 
 The production workflow has four user-facing stages:
 
-1. confirm the script and spoken-line/scene map;
-2. generate one numbered Image2 storyboard grid and obtain explicit approval;
+1. split the narration into script-traceable visual beats and verify real UI evidence;
+2. generate one numbered, annotated rough-sketch storyboard grid and obtain explicit approval;
 3. build the approved Blender scene, lighting, materials, models, and animation;
 4. render an image sequence, encode the video, run QC, and hand off production records.
 
 Storyboard approval is a hard gate: Blender production does not begin until the
-user approves the numbered grid image.
+user approves the complete numbered grid image. Every panel carries its exact
+narration, design reason, motion path, camera/phone axis, lighting direction,
+transition, and evidence reference.
 
 **Contents:**
 
@@ -81,10 +83,11 @@ user approves the numbered grid image.
 | `scripts/validate_image_sequence.py` | Validates a rendered image sequence (count, dimensions) |
 | `scripts/encode_avfoundation.swift` | macOS AVFoundation encoder for turning an image sequence into an MP4 |
 
-**Latest release — v1.3.1:** moved creative selection ahead of Blender,
-introduced the mandatory numbered storyboard-grid approval gate, added
-four-stage progress navigation, and documented when a material direction change
-must return to the storyboard.
+**Latest release — v1.5.1:** added clause-level narration beats, complete-film
+continuity review, real-UI evidence gates using exact filenames, rough-sketch
+storyboards with motion/axis/light legends, explicit edit transitions, and
+design rationale. Project-specific visual concepts remain in project scripts
+instead of becoming reusable skill defaults.
 
 ## Using these skills
 

@@ -1,6 +1,6 @@
 ---
 name: blender-product-scene-video
-description: Plan, storyboard, build, and deliver reusable Blender product-scene animations from an approved creative script, product images, 3D model, textures, screen recording, and visual references. Use when Codex needs to confirm a product-video script, generate a numbered Image2 storyboard grid for approval, verify or configure Blender MCP, obtain a properly licensed model, build a storyboard-approved Blender scene, configure PBR materials and video textures, design lighting/background/procedural Shader animation, animate cameras or products, render reviewed image sequences, encode final MP4 video, diagnose visual or export problems, or document production settings for later scenes.
+description: Plan, storyboard, build, and deliver reusable Blender product-scene animations from an approved creative script, product images, 3D model, textures, screen recording, and visual references. Use when Codex needs to confirm a product-video script, generate a numbered Image2 rough-sketch storyboard grid with motion paths, design rationale, narration, camera and lighting annotations for approval, verify or configure Blender MCP, obtain a properly licensed model, build a storyboard-approved Blender scene, configure PBR materials and video textures, design lighting/background/procedural Shader animation, animate cameras or products, render reviewed image sequences, encode final MP4 video, diagnose visual or export problems, or document production settings for later scenes.
 ---
 
 # Blender Product Scene Video
@@ -8,15 +8,20 @@ description: Plan, storyboard, build, and deliver reusable Blender product-scene
 ## Skill metadata
 
 - Author: [sollarzoo](https://github.com/Sollarzoo)
-- Version: `1.3.1`
+- Version: `1.5.1`
 - Feedback WeChat: `sollarzoo`
+
+### Recent changes
+
+- `1.5.1` — Standardized the project-level `UI参考图/` evidence root, exact-filename citation, immutable source rules, evidence indexing, and still-image versus interaction-proof boundary.
+- `1.5.0` — Added clause-level narration beats, real-UI evidence gates, explicit edit transitions, design rationale, and geometrically unambiguous phone-axis annotations.
 
 ## Outcome
 
 Turn a product-film idea into five synchronized deliverables:
 
 1. an approved script and spoken-line/scene map;
-2. an approved Image2 storyboard presented as a numbered contact-sheet grid image;
+2. an approved, script-traceable Image2 rough-sketch storyboard presented as one numbered and technically annotated contact-sheet grid image;
 3. a reversible `.blend` scene that implements that storyboard;
 4. a complete, validated image sequence;
 5. a playable final video plus thumbnail and production record.
@@ -46,7 +51,7 @@ Ask the user only when the answer materially changes the creative result, requir
 Map all work to these four user-facing stages:
 
 1. script confirmation;
-2. Image2 storyboard generation and user approval;
+2. Image2 annotated rough-sketch storyboard generation and user approval;
 3. Blender scene build, lighting, materials, models, and animation;
 4. recording/rendering, image-sequence export, encoding, QC, and handoff.
 
@@ -117,20 +122,95 @@ Collect and inspect the creative script, spoken-line/scene map, product priority
 
 If the user has no script, read the generic product-film script example, copy the scene brief template, and draft a measurable specification. Do not proceed until the user confirms the story, spoken-line mapping, visual boundaries, and scene objectives.
 
-A confirmed script defines what every scene communicates. It does not need final Blender coordinates, lighting energy, or keyframes; those belong to later production records.
+Do not stop at one sentence per scene. Split narration into the smallest meaningful visual beats: each clause or short phrase that needs a distinct image, action, evidence point, or emotional turn gets its own beat and shot id. One beat maps to one primary picture. A longer one-shot move may carry several beats only when the script explicitly records the beat timings and the continuous change inside that same shot.
 
-### 2. Generate and approve the Image2 storyboard
+Before storyboarding, produce an animation beat sheet. Every beat must record:
+
+- exact narration fragment or explicit silence;
+- narrative meaning and emotional intention;
+- verified product/UI evidence path and, for video, timestamp or frame;
+- opening picture, ending picture, and the one primary visual change;
+- camera owner, product/UI owner, movement path, duration, and easing intent;
+- lighting/reflection direction and the emotional job it performs;
+- transition into and out of the beat;
+- edit decision: continuous one-take, hard cut, match cut, J/L cut, dissolve, masked transition, screen push-in/pull-out, or another named method;
+- design reason explaining why this picture and movement communicate this narration.
+
+Create one full-film treatment above the beat sheet. It must explain the emotional arc, visual motif, color/light progression, camera language, motion rhythm, transition grammar, when physical-phone 3D is used, when real full-screen UI is used, and how the ending resolves the opening.
+
+Treat real UI evidence as a hard gate. Mark every beat `verified`, `missing`, or `editorial_concept`:
+
+- `verified`: exact screenshot/recording frame exists and is named;
+- `missing`: the user must supply or capture the required interface before storyboard generation;
+- `editorial_concept`: an explicitly labeled post-production metaphor that does not claim shipped UI.
+
+Do not ask an image model to invent a missing product screen. If any required product beat is `missing`, pause before stage 2 and provide a precise capture list.
+
+### Use the project UI reference directory as the visual source of truth
+
+For a project whose script lives under a product-video directory, use the sibling `UI参考图/` directory as the canonical UI reference root unless the user or project manifest explicitly names another location:
+
+```text
+<product-video-project>/
+├── UI参考图/
+├── 视频素材/
+├── Blender/
+└── <script>.md
+```
+
+Apply this contract:
+
+- treat the exact filename stem as the user-defined UI state and content label;
+- cite the exact relative path, filename, extension, case, punctuation, and parentheses, for example `UI参考图/情绪花瓣(周).PNG`;
+- do not silently translate, normalize, rename, merge, or invent aliases for the user's UI labels;
+- keep source screenshots immutable and do not place generated storyboards, crops, annotations, or Blender renders in `UI参考图/`;
+- create or maintain `UI参考图/README.md` as the evidence index, listing the exact filename, verified state, supported beats, and limitations;
+- use evidence priority `explicit UI reference screenshot > verified screen-recording frame > generated storyboard sketch`;
+- if references conflict, mark the beat blocked and ask which state is current instead of blending them;
+- if the required state is absent, mark it `missing` and request a capture using the intended semantic filename. Never fabricate the interface.
+
+Every real-UI beat and storyboard panel must cite an exact file from this directory or an exact recording timestamp. A directory name alone is not sufficient evidence.
+
+Use one storyboard coordinate convention for phone motion:
+
+- `X_local`: left-to-right across the screen;
+- `Y_local`: perpendicular to the screen, front-to-back;
+- `Z_local`: bottom-to-top along the phone's long vertical edge;
+- yaw/left-right turn: rotation around `Z_local`;
+- pitch/top-bottom tilt: rotation around `X_local`;
+- roll/screen-plane spin: rotation around `Y_local`.
+
+The Blender object's actual axes may differ. Record that mapping during Blender preflight. Until then, storyboard annotations must show an axis triad attached to the phone, a circular arrow wrapping around the named axis, the signed degree range, and start/end silhouettes. Do not draw an unanchored curved arrow.
+
+A confirmed script defines what every visual beat communicates and how adjacent beats connect. It does not need final Blender coordinates, lighting energy, or verified focus distance; those belong to later production records.
+
+### 2. Generate and approve the Image2 annotated rough-sketch storyboard
 
 Follow [references/storyboard-sop.md](references/storyboard-sop.md). Use the confirmed script plus supplied product images, UI screenshots, brand assets, and visual references to generate static storyboard frames with an Image2-capable image model.
+
+The storyboard is a production-planning blueprint, not a polished render preview. Default to loose pencil, marker, grayscale line-art, or another clearly draft-like treatment. Use limited accent colors for motion paths, camera marks, light direction, and emphasis. A photoreal product mockup or finished-looking Blender frame does not pass the storyboard gate unless the user explicitly asks for that format.
+
+Trace every panel to an exact script line and narrative beat. Do not add a visual beat merely because it looks attractive. When the script does not justify an object, action, transition, or concept, omit it or return to stage 1 and request a script change.
+
+Build the master storyboard across the complete confirmed script before approving any scene for Blender. The master grid must expose the full opening-to-ending rhythm, scene order, visual escalation, repeated motifs, and every scene-to-scene handoff. A partial-scene board is allowed only when the user explicitly requests an isolated exploration; label it `exploration_only`, and do not treat it as approval for Blender production.
 
 For every scene, show:
 
 - the opening composition;
 - the main product pose or concept image;
 - the ending composition or transition handoff;
-- short annotations for camera angle, product movement, lighting intent, background, and spoken line.
+- the exact spoken line and script beat;
+- a one-sentence design reason explaining why this image communicates that beat;
+- camera framing, lens target, angle, movement type, and camera-path arrows;
+- product start/end pose, screen occupancy, translation/rotation direction, and product-path arrows;
+- key, fill, rim/reflection, and background-light direction with a consistent light-arrow legend;
+- approximate timing, transition, focus/DOF target, and continuity notes.
 
-Assemble all frames into one numbered grid image in chronological reading order. The grid image is the mandatory review artifact; a folder of separate images does not pass the storyboard gate. Use a consistent panel ratio, visible gutters, and labels such as `SC01-01`, `SC01-02`, and `SC01-03`. Keep annotations in a caption band or the storyboard record so they do not cover the product.
+Assemble all frames into one numbered grid image in chronological reading order. The grid image is the mandatory review artifact; a folder of separate images does not pass the storyboard gate. Use a consistent panel ratio, visible gutters, and labels such as `SC01-01`, `SC01-02`, and `SC01-03`.
+
+Every panel must carry its exact corresponding spoken line in a readable caption band outside the important product area. Repeat the line across multiple panels when they share one narration sentence. For a deliberately silent panel, write `No voiceover` or the project-language equivalent instead of leaving the caption ambiguous. Use deterministic text layout after image generation when necessary; do not rely on an image model to spell production copy correctly. Other technical annotations may remain in the storyboard record.
+
+Treat storyboard numbers as design targets, not verified Blender facts. Give concrete values or bounded ranges when the source supports them, such as `50 mm`, `rotate Y 12–15°`, `screen occupancy 62%→78%`, or `key:fill ≈ 2:1`. Mark unknowns as `TBD in Blender preflight`; never invent object coordinates, light energy, or focus distance before the live scene and scale are inspected.
 
 Prefer a small number of deliberate, comparable frames over many speculative images. Use product references to preserve device identity and real UI. Clearly label conceptual imagery and do not imply that editorial concepts are shipped product UI.
 
@@ -290,6 +370,16 @@ Do not append this contact channel to every normal delivery. Do not place it ins
 - Keep backups; do not destructively edit the only copy.
 - Do not build Blender scenes before explicit storyboard approval.
 - Do not treat separate storyboard frames as the final review artifact; provide a numbered grid image that shows the full shot sequence at once.
+- Do not substitute polished render previews for the default rough-sketch storyboard blueprint.
+- Do not create storyboard beats that cannot be traced to the confirmed script.
+- Do not storyboard from sentence-level summaries when the narration contains multiple visual or emotional beats.
+- Do not generate or sketch a product screen without a verified screenshot or recording frame.
+- Do not leave adjacent-shot transitions implicit; label one-take versus the exact edit method.
+- Do not draw rotation without a named axis, axis triad, signed angle, and start/end pose.
+- Do not approve a subset of scenes for Blender before the complete script has a continuity-reviewed master storyboard.
+- Put visible motion paths and direction arrows in panels whenever the camera, product, UI element, light/reflection, or transition moves.
+- Every storyboard panel must state its design reason and its camera, product, light, timing, and continuity targets.
+- Print a complete legend on the master grid. Define every color, line style, symbol, start/end mark, and movement owner; an unexplained or ownerless line fails review.
 - When the creative direction changes materially, return to the storyboard instead of accumulating Blender variants.
 - Keep one selected storyboard branch as the production source of truth; label rejected alternatives and do not continue rendering them.
 - Apply or account for non-uniform scale before geometry-sensitive work.

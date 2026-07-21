@@ -1,4 +1,4 @@
 interface:
   display_name: "Blender 产品场景视频"
-  short_description: "先确认脚本和宫格故事板，再搭建 Blender 场景并导出视频"
-  default_prompt: "Use $blender-product-scene-video to confirm my product-film script, generate a numbered Image2 storyboard grid for approval, then build the approved Blender scene and export the final video."
+  short_description: "先逐句细化动画脚本和真实界面证据，再画技术草图并搭建 Blender"
+  default_prompt: "Use $blender-product-scene-video to inspect the project's UI参考图 directory, preserve every exact UI filename as the canonical state label, split my narration into clause-level visual beats, verify the real UI evidence for every beat, define emotion, motion, axes, lighting, and edit transitions, obtain script approval, then generate the annotated rough-sketch storyboard and build the approved Blender scene."
